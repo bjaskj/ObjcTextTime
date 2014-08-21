@@ -27,12 +27,12 @@
 {
     int intNumber = [number intValue];
     
-    // betwheen 1 and 9
+    // between 1 and 9
     if (intNumber >= 1 && intNumber <= 9) {
         return [_numbersOneToNine objectAtIndex:intNumber-1];
     }
     
-    // betwheen 10 and 19
+    // between 10 and 19
     if (intNumber >= 10 && intNumber <= 19) {
         return [_numbersFromTenToNineteen objectAtIndex:intNumber-10];
     }
