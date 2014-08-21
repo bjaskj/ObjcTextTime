@@ -18,6 +18,6 @@
 - (void)testZeroReturnsOClock {
     TextTimeConverter *converter = [[TextTimeConverter alloc] init];
     NSString *result = [converter convertNumber:@0];
-    XCTAssertEqual(result, @"0");
+    XCTAssertTrue([result isEqualToString:@"O'clock"]);
 }
 @end

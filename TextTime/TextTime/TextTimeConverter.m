@@ -11,6 +11,6 @@
 @implementation TextTimeConverter
 - (NSString *) convertNumber:(NSNumber *)number;
 {
-    return @"hey";
+    return @"O'clock";
 }
 @end
