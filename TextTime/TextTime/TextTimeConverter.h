@@ -10,4 +10,5 @@
 
 @interface TextTimeConverter : NSObject
 - (NSString *) convertNumber:(NSNumber *)number;
+- (NSString *) convertNumber:(NSNumber *)number isHour:(BOOL)isHour;
 @end

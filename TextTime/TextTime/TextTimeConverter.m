@@ -11,6 +11,14 @@
 @implementation TextTimeConverter
 - (NSString *) convertNumber:(NSNumber *)number;
 {
+    return [self convertNumber:number isHour:NO];
+}
+- (NSString *) convertNumber:(NSNumber *)number isHour:(BOOL)isHour;
+{
+    if (isHour == YES)
+    {
+        return @"Midnight";
+    }
     return @"O'clock";
 }
 @end

@@ -10,14 +10,30 @@
 #import <XCTest/XCTest.h>
 #import "TextTimeConverter.h"
 
-@interface TextTimeConverterTests : XCTestCase
+@interface TextTimeConverterTests : XCTestCase{
+    TextTimeConverter *_converter;
+}
 
 @end
 
 @implementation TextTimeConverterTests
+
+- (void)setUp {
+    [super setUp];
+    _converter = [[TextTimeConverter alloc] init];
+}
+
+- (void)tearDown {
+    [super tearDown];
+}
+
 - (void)testZeroReturnsOClock {
-    TextTimeConverter *converter = [[TextTimeConverter alloc] init];
-    NSString *result = [converter convertNumber:@0];
+    NSString *result = [_converter convertNumber:@0];
     XCTAssertTrue([result isEqualToString:@"O'clock"]);
+}
+
+- (void)testZeroAndHourReturnsMidnight {
+    NSString *result = [_converter convertNumber:@0 isHour:YES];
+    XCTAssertTrue([result isEqualToString:@"Midnight"]);
 }
 @end
