@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TextTimeConverter : NSObject
+@interface TextTimeConverter : NSObject{
+    NSArray *_numbersOneToNine;
+}
 - (NSString *) convertNumber:(NSNumber *)number;
 - (NSString *) convertNumber:(NSNumber *)number isHour:(BOOL)isHour;
 @end

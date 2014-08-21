@@ -12,6 +12,7 @@
 
 @interface TextTimeConverterTests : XCTestCase{
     TextTimeConverter *_converter;
+    NSDictionary *_numbersOneToNine;
 }
 
 @end
@@ -21,6 +22,8 @@
 - (void)setUp {
     [super setUp];
     _converter = [[TextTimeConverter alloc] init];
+    
+    _numbersOneToNine = @{ @"One": @1, @"Two": @2, @"Three": @3, @"Four": @4, @"Five": @5, @"Six": @6, @"Seven": @7, @"Eight": @8, @"Nine": @9 };
 }
 
 - (void)tearDown {
@@ -37,8 +40,13 @@
     XCTAssertEqualObjects(result, @"Midnight");
 }
 
-- (void)testOneReturnsOne {
-    NSString *result = [_converter convertNumber:@1];
-    XCTAssertEqualObjects(result, @"One");
+- (void)testNumbersBelowTen {
+    
+    for (NSString *expectedText in _numbersOneToNine) {
+        NSNumber *numberToConvert = _numbersOneToNine[expectedText];
+        
+        NSString *result = [_converter convertNumber:numberToConvert];
+        XCTAssertEqualObjects(result, expectedText);
+    }
 }
 @end
