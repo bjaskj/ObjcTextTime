@@ -95,5 +95,26 @@
     }
 }
 
+// numbers 31-39 starts with "Thirty-"
+
+- (void)testNumbersThirtyRangeShouldReturnCorrectFirstPart {
+    for (int number = 31; number <= 39; number++) {
+        NSString *result = [_converter convertNumber:[NSNumber numberWithInt:number]];
+        XCTAssertTrue([result hasPrefix:@"Thirty-"]);
+    }
+}
+
+// numbers 31-39 ends with number
+
+- (void)testNumbersThirtyRangeShouldReturnCorrectLastPart {
+    for (NSString *expectedText in _numbersOneToNine) {
+        NSNumber *numberToConvert = _numbersOneToNine[expectedText];
+        NSNumber *numberWanted = @(20 + [numberToConvert intValue]);
+        
+        NSString *result = [_converter convertNumber:numberWanted];
+        NSString *expectedTextWithDash = [NSString stringWithFormat:@"-%@", expectedText];
+        XCTAssertTrue([result hasSuffix:expectedTextWithDash], @"'%@' did not end with: '%@'", result, expectedTextWithDash);
+    }
+}
 
 @end
