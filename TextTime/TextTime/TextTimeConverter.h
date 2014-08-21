@@ -10,6 +10,7 @@
 
 @interface TextTimeConverter : NSObject{
     NSArray *_numbersOneToNine;
+    NSArray *_numbersFromTenToNineteen;
 }
 - (NSString *) convertNumber:(NSNumber *)number;
 - (NSString *) convertNumber:(NSNumber *)number isHour:(BOOL)isHour;

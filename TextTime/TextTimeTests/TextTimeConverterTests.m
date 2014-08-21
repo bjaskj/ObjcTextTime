@@ -49,4 +49,16 @@
         XCTAssertEqualObjects(result, expectedText);
     }
 }
+
+- (void)testNumbersFromTenToNineteen {
+    
+    NSDictionary *numbers = @{ @"Ten": @10, @"Eleven": @11, @"Twelve": @12, @"Thirteen": @13, @"Fourteen": @14, @"Fifteen": @15, @"Sixteen": @16, @"Seventeen": @17, @"Eighteen": @18, @"Nineteen": @19 };
+    
+    for (NSString *expectedText in numbers) {
+        NSNumber *numberToConvert = numbers[expectedText];
+        
+        NSString *result = [_converter convertNumber:numberToConvert];
+        XCTAssertEqualObjects(result, expectedText);
+    }
+}
 @end
