@@ -117,4 +117,26 @@
     }
 }
 
+// numbers 41-49 starts with "Forty-"
+
+- (void)testNumbersFortyRangeShouldReturnCorrectFirstPart {
+    for (int number = 41; number <= 49; number++) {
+        NSString *result = [_converter convertNumber:[NSNumber numberWithInt:number]];
+        XCTAssertTrue([result hasPrefix:@"Forty-"]);
+    }
+}
+
+// numbers 41-49 ends with number
+
+- (void)testNumbersFortyRangeShouldReturnCorrectLastPart {
+    for (NSString *expectedText in _numbersOneToNine) {
+        NSNumber *numberToConvert = _numbersOneToNine[expectedText];
+        NSNumber *numberWanted = @(40 + [numberToConvert intValue]);
+        
+        NSString *result = [_converter convertNumber:numberWanted];
+        NSString *expectedTextWithDash = [NSString stringWithFormat:@"-%@", expectedText];
+        XCTAssertTrue([result hasSuffix:expectedTextWithDash], @"'%@' did not end with: '%@'", result, expectedTextWithDash);
+    }
+}
+
 @end
