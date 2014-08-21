@@ -41,8 +41,17 @@
     // between 20 and 59
     if (intNumber >= 20 && intNumber <= 59) {
         int firstNumber = [number intValue] / 10;
+        int lastNumber = intNumber - (firstNumber * 10);
         
-        return [_numbersByTen objectForKey:[NSNumber numberWithInt:firstNumber]];
+        // check if last number is zero, this means we only have to do numbers by ten
+        if (lastNumber == 0) {
+            return [_numbersByTen objectForKey:[NSNumber numberWithInt:firstNumber]];
+        }
+        
+        NSString *firstTextPart = [_numbersByTen objectForKey:[NSNumber numberWithInt:firstNumber]];
+        NSString *lastTextPart = [_numbersOneToNine objectAtIndex:lastNumber-1];
+        
+        return [NSString stringWithFormat:@"%@-%@", firstTextPart, lastTextPart];
     }
     
     if (isHour == YES)

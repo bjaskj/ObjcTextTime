@@ -73,4 +73,27 @@
     }
 }
 
+// numbers 21-29 starts with "Twenty-"
+
+- (void)testNumbersTwentyRangeShouldReturnCorrectFirstPart {
+    for (int number = 21; number <= 29; number++) {
+        NSString *result = [_converter convertNumber:[NSNumber numberWithInt:number]];
+        XCTAssertTrue([result hasPrefix:@"Twenty-"]);
+    }
+}
+
+// numbers 21-29 ends with number
+
+- (void)testNumbersTwentyRangeShouldReturnCorrectLastPart {
+    for (NSString *expectedText in _numbersOneToNine) {
+        NSNumber *numberToConvert = _numbersOneToNine[expectedText];
+        NSNumber *numberWanted = @(20 + [numberToConvert intValue]);
+        
+        NSString *result = [_converter convertNumber:numberWanted];
+        NSString *expectedTextWithDash = [NSString stringWithFormat:@"-%@", expectedText];
+        XCTAssertTrue([result hasSuffix:expectedTextWithDash], @"'%@' did not end with: '%@'", result, expectedTextWithDash);
+    }
+}
+
+
 @end
