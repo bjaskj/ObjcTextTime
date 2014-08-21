@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextTimeConverter.h"
 
 //! Project version number for TextTime.
 FOUNDATION_EXPORT double TextTimeVersionNumber;
