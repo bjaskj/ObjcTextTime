@@ -15,6 +15,10 @@
 }
 - (NSString *) convertNumber:(NSNumber *)number isHour:(BOOL)isHour;
 {
+    if ([number isEqual: @1]) {
+        return @"One";
+    }
+    
     if (isHour == YES)
     {
         return @"Midnight";

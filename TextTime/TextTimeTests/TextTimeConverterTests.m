@@ -29,11 +29,16 @@
 
 - (void)testZeroReturnsOClock {
     NSString *result = [_converter convertNumber:@0];
-    XCTAssertTrue([result isEqualToString:@"O'clock"]);
+    XCTAssertEqualObjects(result, @"O'clock");
 }
 
 - (void)testZeroAndHourReturnsMidnight {
     NSString *result = [_converter convertNumber:@0 isHour:YES];
-    XCTAssertTrue([result isEqualToString:@"Midnight"]);
+    XCTAssertEqualObjects(result, @"Midnight");
+}
+
+- (void)testOneReturnsOne {
+    NSString *result = [_converter convertNumber:@1];
+    XCTAssertEqualObjects(result, @"One");
 }
 @end
