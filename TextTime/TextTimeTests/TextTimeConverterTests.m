@@ -61,4 +61,16 @@
         XCTAssertEqualObjects(result, expectedText);
     }
 }
+
+- (void)testNumbersFromTwentyUntilFifty {
+    NSDictionary *numbers = @{ @"Twenty": @20, @"Thirty": @30, @"Forty": @40, @"Fifty": @50 };
+    
+    for (NSString *expectedText in numbers) {
+        NSNumber *numberToConvert = numbers[expectedText];
+        
+        NSString *result = [_converter convertNumber:numberToConvert];
+        XCTAssertEqualObjects(result, expectedText);
+    }
+}
+
 @end
