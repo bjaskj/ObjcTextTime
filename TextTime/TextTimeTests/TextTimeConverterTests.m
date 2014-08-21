@@ -139,4 +139,26 @@
     }
 }
 
+// numbers 51-59 starts with "Fifty-"
+
+- (void)testNumbersFiftyRangeShouldReturnCorrectFirstPart {
+    for (int number = 51; number <= 59; number++) {
+        NSString *result = [_converter convertNumber:[NSNumber numberWithInt:number]];
+        XCTAssertTrue([result hasPrefix:@"Fifty-"]);
+    }
+}
+
+// numbers 51-59 ends with number
+
+- (void)testNumbersFiftyRangeShouldReturnCorrectLastPart {
+    for (NSString *expectedText in _numbersOneToNine) {
+        NSNumber *numberToConvert = _numbersOneToNine[expectedText];
+        NSNumber *numberWanted = @(50 + [numberToConvert intValue]);
+        
+        NSString *result = [_converter convertNumber:numberWanted];
+        NSString *expectedTextWithDash = [NSString stringWithFormat:@"-%@", expectedText];
+        XCTAssertTrue([result hasSuffix:expectedTextWithDash], @"'%@' did not end with: '%@'", result, expectedTextWithDash);
+    }
+}
+
 @end
